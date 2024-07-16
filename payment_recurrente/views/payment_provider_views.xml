@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_recurrente_payment_provider_form" model="ir.ui.view">
+        <field name="name">Recurrente Provider Form</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+            <group name="provider_credentials" position='inside'>
+                <group invisible="code != 'recurrente'">
+                    <field name="recurrente_public_key" password="True"
+                           required="code == 'recurrente' and state != 'disabled'"/>
+                    <field name="recurrente_secret_key" password="True"
+                           required="code == 'recurrente' and state != 'disabled'"/>
+                    <a href="https://blog.codingtipi.com/como-aceptar-pagos-con-tarjeta-desde-woocommerce-con-recurrente/"
+                       target="_blank"
+                       colspan="2">
+                        How to configure your Recurrente account?
+                    </a>
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>

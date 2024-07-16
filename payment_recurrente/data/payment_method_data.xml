@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_method_recurrente" model="payment.method">
+        <field name="name">Recurrente</field>
+        <field name="code">recurrente</field>
+        <field name="sequence">20</field>
+        <field name="active">False</field>
+        <field name="image" type="base64" file="payment_recurrente/static/description/icon.png"/>
+        <field name="support_tokenization">False</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_refund"></field>
+    </record>
+
+</odoo>
