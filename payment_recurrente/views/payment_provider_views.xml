@@ -7,11 +7,11 @@
         <field name="inherit_id" ref="payment.payment_provider_form"/>
         <field name="arch" type="xml">
             <group name="provider_credentials" position='inside'>
-                <group invisible="code != 'recurrente'">
+                <group attrs="{'invisible': [('code', '!=', 'recurrente')]}">
                     <field name="recurrente_public_key" password="True"
-                           required="code == 'recurrente' and state != 'disabled'"/>
+                        attrs="{'required': ['&amp;', ('code', '=', 'recurrente'), ('state', '!=', 'disabled')]}"/>
                     <field name="recurrente_secret_key" password="True"
-                           required="code == 'recurrente' and state != 'disabled'"/>
+                        attrs="{'required': ['&amp;', ('code', '=', 'recurrente'), ('state', '!=', 'disabled')]}"/>
                     <a href="https://blog.codingtipi.com/como-aceptar-pagos-con-tarjeta-desde-woocommerce-con-recurrente/"
                        target="_blank"
                        colspan="2">

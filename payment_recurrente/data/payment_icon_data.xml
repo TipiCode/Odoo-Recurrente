@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="payment_icon_recurrente" model="payment.icon">
+        <field name="sequence">300</field>
+        <field name="name">Recurrente</field>
+        <field name="image" type="base64" file="payment_recurrente/static/img/recurrente.png"/>
+    </record>
+
+</odoo>

@@ -9,15 +9,15 @@
             <field name="provider_reference" position="after">
                 <field name="id_recurrente_checkout"
                        readonly="1"
-                       invisible="provider_code != 'recurrente'"
+                       attrs="{'invisible': [('provider_code', '!=', 'recurrente')]}"
                        groups="base.group_no_one"/>
                 <field name="url_recurrente_checkout"
                        readonly="1"
-                       invisible="provider_code != 'recurrente'"
+                       attrs="{'invisible': [('provider_code', '!=', 'recurrente')]}"
                        groups="base.group_no_one"/>
                 <field name="product_recurrente_checkout"
                        readonly="1"
-                       invisible="provider_code != 'recurrente'"
+                       attrs="{'invisible': [('provider_code', '!=', 'recurrente')]}"
                        groups="base.group_no_one"/>
             </field>
         </field>

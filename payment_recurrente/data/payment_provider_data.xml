@@ -3,15 +3,13 @@
 
     <record id="payment_provider_recurrente" model="payment.provider">
         <field name="name">Recurrente</field>
+        <field name="code">recurrente</field>
         <field name="image_128" type="base64" file="payment_recurrente/static/description/icon.png"/>
         <field name="module_id" ref="base.module_payment_recurrente"/>
-        <field name="payment_method_ids"
-               eval="[Command.set([
-                         ref('payment_recurrente.payment_method_recurrente'),
-                     ])]"
-        />
-        <field name="code">recurrente</field>
         <field name="redirect_form_view_id" ref="redirect_form"/>
+        <field name="payment_icon_ids" eval="[(6, 0, [
+            ref('payment_recurrente.payment_icon_recurrente'),
+        ])]"/>
     </record>
 
 </odoo>
