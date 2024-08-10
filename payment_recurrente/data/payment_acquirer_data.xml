@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo noupdate="1">
 
-    <record id="payment_provider_recurrente" model="payment.provider">
+    <record id="payment_acquirer_recurrente" model="payment.acquirer">
         <field name="name">Recurrente</field>
-        <field name="code">recurrente</field>
+        <field name="provider">recurrente</field>
         <field name="image_128" type="base64" file="payment_recurrente/static/description/icon.png"/>
         <field name="module_id" ref="base.module_payment_recurrente"/>
         <field name="redirect_form_view_id" ref="redirect_form"/>
         <field name="payment_icon_ids" eval="[(6, 0, [
             ref('payment_recurrente.payment_icon_recurrente'),
         ])]"/>
+    </record>
+
+    <record id="payment_method_recurrente" model="account.payment.method">
+        <field name="name">Recurrente</field>
+        <field name="code">recurrente</field>
+        <field name="payment_type">inbound</field>
     </record>
 
 </odoo>

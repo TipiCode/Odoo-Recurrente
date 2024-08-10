@@ -1,0 +1,99 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* payment_recurrente
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20240730\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-10 01:56+0000\n"
+"PO-Revision-Date: 2024-08-10 01:56+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: payment_recurrente
+#: model_terms:ir.ui.view,arch_db:payment_recurrente.view_recurrente_payment_acquirer_form
+msgid "How to configure your Recurrente account?"
+msgstr "¿Cómo configurar tu cuenta de Recurrente?"
+
+#. module: payment_recurrente
+#: model:ir.model,name:payment_recurrente.model_payment_acquirer
+msgid "Payment Acquirer"
+msgstr "Proveedor de pago"
+
+#. module: payment_recurrente
+#: model:ir.model,name:payment_recurrente.model_account_payment_method
+msgid "Payment Methods"
+msgstr "Métodos de pago"
+
+#. module: payment_recurrente
+#: model:ir.model,name:payment_recurrente.model_payment_transaction
+msgid "Payment Transaction"
+msgstr "Transacción de pago"
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_acquirer__provider
+msgid "Provider"
+msgstr "Proveedor"
+
+#. module: payment_recurrente
+#: model:account.payment.method,name:payment_recurrente.payment_method_recurrente
+#: model:ir.model.fields.selection,name:payment_recurrente.selection__payment_acquirer__provider__recurrente
+#: model:payment.acquirer,name:payment_recurrente.payment_acquirer_recurrente
+msgid "Recurrente"
+msgstr ""
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_transaction__id_recurrente_checkout
+msgid "Recurrente Checkout ID"
+msgstr "Id Checkout Recurrente"
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_transaction__product_recurrente_checkout
+msgid "Recurrente Checkout Product"
+msgstr "Producto Checkout Recurrente"
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_transaction__url_recurrente_checkout
+msgid "Recurrente Checkout URL"
+msgstr "URL Checkout Recurrente"
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_acquirer__recurrente_public_key
+msgid "Recurrente Public Key"
+msgstr "Llave Pública Recurrente"
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_acquirer__recurrente_secret_key
+msgid "Recurrente Secret Key"
+msgstr "Llave Privada Recurrente"
+
+#. module: payment_recurrente
+#: model_terms:payment.acquirer,auth_msg:payment_recurrente.payment_acquirer_recurrente
+msgid "Se ha autorizado tu pago."
+msgstr ""
+
+#. module: payment_recurrente
+#: model:ir.model.fields,help:payment_recurrente.field_payment_acquirer__provider
+msgid "The Payment Service Provider to use with this acquirer"
+msgstr "El proveedor de servicios de pago a utilizar con este adquirente"
+
+#. module: payment_recurrente
+#: model_terms:payment.acquirer,cancel_msg:payment_recurrente.payment_acquirer_recurrente
+msgid "Tu pago ha sido cancelado."
+msgstr ""
+
+#. module: payment_recurrente
+#: model_terms:payment.acquirer,pending_msg:payment_recurrente.payment_acquirer_recurrente
+msgid ""
+"Tu pago ha sido procesado con éxito pero está en espera de tu aprobación."
+msgstr ""
+
+#. module: payment_recurrente
+#: model_terms:payment.acquirer,done_msg:payment_recurrente.payment_acquirer_recurrente
+msgid "Tu pago se ha procesado con éxito. ¡Gracias!"
+msgstr ""

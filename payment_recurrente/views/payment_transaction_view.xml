@@ -6,18 +6,18 @@
         <field name="model">payment.transaction</field>
         <field name="inherit_id" ref="payment.payment_transaction_form"/>
         <field name="arch" type="xml">
-            <field name="provider_reference" position="after">
+            <field name="reference" position="after">
                 <field name="id_recurrente_checkout"
                        readonly="1"
-                       attrs="{'invisible': [('provider_code', '!=', 'recurrente')]}"
+                       attrs="{'invisible': [('provider', '!=', 'recurrente')]}"
                        groups="base.group_no_one"/>
                 <field name="url_recurrente_checkout"
                        readonly="1"
-                       attrs="{'invisible': [('provider_code', '!=', 'recurrente')]}"
+                       attrs="{'invisible': [('provider', '!=', 'recurrente')]}"
                        groups="base.group_no_one"/>
                 <field name="product_recurrente_checkout"
                        readonly="1"
-                       attrs="{'invisible': [('provider_code', '!=', 'recurrente')]}"
+                       attrs="{'invisible': [('provider', '!=', 'recurrente')]}"
                        groups="base.group_no_one"/>
             </field>
         </field>

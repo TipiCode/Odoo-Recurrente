@@ -13,32 +13,24 @@ from odoo.addons.payment_recurrente.controllers.main import RecurrenteController
 
 _logger = logging.getLogger(__name__)
 
-class PaymentProvider(models.Model):
-    _inherit = 'payment.provider'
+class PaymentAcquirer(models.Model):
+    _inherit = 'payment.acquirer'
 
-    code = fields.Selection(
+    provider = fields.Selection(
         selection_add=[('recurrente', "Recurrente")], ondelete={'recurrente': 'set default'}
     )
     recurrente_public_key = fields.Char(string="Recurrente Public Key", groups='base.group_system')
     recurrente_secret_key = fields.Char(string="Recurrente Secret Key", groups='base.group_system')
 
     @api.model
-    def _get_compatible_providers(self, *args, is_validation=False, **kwargs):
-        """ Override of `payment` to filter out Recurrente providers for validation operations. """
-        providers = super()._get_compatible_providers(*args, is_validation=is_validation, **kwargs)
+    def _get_compatible_acquirers(self, *args, currency_id=None, **kwargs):
+        """ Override of `payment` to filter out Recurrente acquirers for unsupported currencies. """
+        acquirers = super()._get_compatible_acquirers(*args, currency_id=currency_id, **kwargs)
 
-        if is_validation:
-            providers = providers.filtered(lambda p: p.code != 'recurrente')
-        return providers
-
-    def _get_supported_currencies(self):
-        """ Override of `payment` to return the supported currencies. """
-        supported_currencies = super()._get_supported_currencies()
-        if self.code == 'recurrente':
-            supported_currencies = supported_currencies.filtered(
-                lambda c: c.name in const.SUPPORTED_CURRENCIES
-            )
-        return supported_currencies
+        currency = self.env['res.currency'].browse(currency_id).exists()
+        if currency and currency.name not in const.SUPPORTED_CURRENCIES:
+            acquirers = acquirers.filtered(lambda p: p.provider != 'recurrente')
+        return acquirers
 
     def _recurrente_make_request(self, endpoint, payload=None, method='POST'):
         """ Make a request to Recurrente API at the specified endpoint.
@@ -82,9 +74,8 @@ class PaymentProvider(models.Model):
             )
         return response.json()
 
-    def _get_default_payment_method_codes(self):
-        """ Override of `payment` to return the default payment method codes. """
-        default_codes = super()._get_default_payment_method_codes()
-        if self.code != 'recurrente':
-            return default_codes
-        return const.DEFAULT_PAYMENT_METHODS_CODES
+    def _get_default_payment_method_id(self):
+        self.ensure_one()
+        if self.provider != 'recurrente':
+            return super()._get_default_payment_method_id()
+        return self.env.ref('payment_recurrente.payment_method_recurrente').id

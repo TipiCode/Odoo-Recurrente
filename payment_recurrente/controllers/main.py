@@ -28,18 +28,18 @@ class RecurrenteController(http.Controller):
         # Redirect the user to the status page.
         return request.redirect('/payment/status')
 
-    @http.route(_webhook_url, type='http', methods=['POST'], auth='public', csrf=False)
+    @http.route(_webhook_url, type='json', methods=['POST'], auth='public', csrf=False)
     def recurrente_webhook(self):
         """ Process the notification data sent by Recurrente to the webhook.
 
         :return: An empty string to acknowledge the notification.
         :rtype: str
         """
-        data = request.get_json_data()
+        data = request.jsonrequest
         _logger.info(f"Notification received from Recurrente with data:\n{pprint.pformat(data)}")
 
         try:
             request.env['payment.transaction'].sudo()._handle_webhook_data(data)
         except ValidationError:
             _logger.exception("Unable to handle the notification data; skipping to acknowledge")
-        return request.make_json_response('')
+        return ""

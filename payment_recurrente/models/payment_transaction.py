@@ -29,7 +29,7 @@ class PaymentTransaction(models.Model):
         :rtype: dict
         """
         res = super()._get_specific_rendering_values(processing_values)
-        if self.provider_code != 'recurrente':
+        if self.provider != 'recurrente':
             return res
 
         # Initiate the payment and retrieve the payment link data.
@@ -54,7 +54,7 @@ class PaymentTransaction(models.Model):
                 "address": self.partner_address or "Ciudad",
             }
         }
-        payment_link_data = self.provider_id._recurrente_make_request('checkouts', payload=payload)
+        payment_link_data = self.acquirer_id._recurrente_make_request('checkouts', payload=payload)
 
         self.id_recurrente_checkout = payment_link_data["id"]
         self.url_recurrente_checkout = payment_link_data["url"]
@@ -74,7 +74,7 @@ class PaymentTransaction(models.Model):
         :rtype: recordset of `payment.transaction`
         """
         reference = notification_data['tx_ref']
-        tx = self.search([('reference', '=', reference), ('provider_code', '=', 'recurrente')])
+        tx = self.search([('reference', '=', reference), ('provider', '=', 'recurrente')])
         if not tx:
             raise ValidationError(
                 "Recurrente: " + _(f"No transaction found matching reference {reference}.")
@@ -124,7 +124,7 @@ class PaymentTransaction(models.Model):
         if not checkout_id or not product_id:
             raise ValidationError("Recurrente: " + _("Received data with missing reference."))
 
-        tx = self.search([('id_recurrente_checkout', '=', checkout_id), ('product_recurrente_checkout', '=', product_id), ('provider_code', '=', 'recurrente')])
+        tx = self.search([('id_recurrente_checkout', '=', checkout_id), ('product_recurrente_checkout', '=', product_id), ('provider', '=', 'recurrente')])
         if not tx:
             raise ValidationError(
                 "Recurrente: " + _(f"No transaction found matching reference {checkout_id} and {product_id}.")
@@ -148,7 +148,7 @@ class PaymentTransaction(models.Model):
             raise ValidationError("Recurrente: " + _("Received data with missing payment."))
 
         # Update the provider reference.
-        self.provider_reference = payment_id
+        self.acquirer_reference = payment_id
 
         # Update the payment state.
         payment_status = notification_data['event_type'].lower()
@@ -169,7 +169,7 @@ class PaymentTransaction(models.Model):
     def _handle_webhook_data(self, notification_data):
         """ Match the transaction with the notification data, update its state and return it.
 
-        :param str provider_code: The code of the provider handling the transaction.
+        :param str provider: The code of the provider handling the transaction.
         :param dict notification_data: The notification data sent by the provider.
         :return: The transaction.
         :rtype: recordset of `payment.transaction`
