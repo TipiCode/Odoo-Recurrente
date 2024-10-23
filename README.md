@@ -57,7 +57,7 @@ Tambien puedes simplemente clona el repositorio, escoger la versión de Odoo que
 Recuerda que el módulo de Website debe de estar instalado en el sitio para poder habilitar el módulo.
 
 ### ⚙️ Configuración
-Para configurar correctamente el módulo encontraras una guía de configuración en el siguiente [enlace](https://blog.codingtipi.com/como-aceptar-pagos-con-tarjeta-desde-woocommerce-con-recurrente/).
+Para configurar correctamente el módulo encontraras una guía de configuración en el siguiente [enlace](https://blog.codingtipi.com/aceptar-pagos-con-tarjeta-desde-odoo-con-recurrente/).
 
 ### 🔑 Obtención de llaves para Test y Live
 Para obtener tus llaves de prueba y producción deber ir a [Recurrente](https://app.recurrente.com/i/5rxput), allí podrás crear tu cuenta y encontrarás instrucciones dentro de su documentación. Dentro del plugin puedes colocar ambas llaves ya sea modo Test o Live en las opciones de <strong>Access Key</strong> y <strong>Secret Key</strong> respectivamente.
