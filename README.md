@@ -8,7 +8,7 @@
 
 # Acerca del proyecto
 
-Módulo para [Odoo](https://www.odoo.com/es) que habilita la pasarela de pago de [Recurrente](https://app.recurrente.com/i/5rxput) como método de pago en el checkout de tú sitio web, implementar una pasarela de pago para realizar cobros en linea no tiene porque ser ciencia espacial.
+Módulo para [Odoo](https://www.odoo.com/es) que habilita la pasarela de pago de [Recurrente](https://app.recurrente.com/i/5rxput) como proveedor dentro de tu instancia de Odoo, implementar una pasarela de pago para realizar cobros en linea no tiene porque ser ciencia espacial.
 
 Este módulo es parte de un esfuerzo conjunto para desarrollar implementaciones para comercios electrónicos sin importar su tamaño. Nuestra meta es implementar las librerías necesarias para la automatización del proceso de venta en línea.
 
