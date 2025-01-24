@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<odoo noupdate="1">
+<!-- <odoo noupdate="1"> -->
+<odoo>
 
     <record id="payment_provider_recurrente" model="payment.provider">
         <field name="name">Recurrente</field>
