@@ -20,6 +20,13 @@
                        invisible="provider_code != 'recurrente'"
                        groups="base.group_no_one"/>
             </field>
+            <xpath expr="//sheet" position="inside">
+                <notebook>
+                    <page name="failure_reasons" string="Failure Reasons">
+                        <field name="payment_intent_failure_reasons" readonly="True"/>
+                    </page>
+                </notebook>
+            </xpath>
         </field>
     </record>
 

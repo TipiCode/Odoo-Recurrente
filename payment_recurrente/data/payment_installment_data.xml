@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="payment_installment_recurrente_1" model="payment.installment_recurrente">
+        <field name="name">3</field>
+    </record>
+
+    <record id="payment_installment_recurrente_2" model="payment.installment_recurrente">
+        <field name="name">6</field>
+    </record>
+
+    <record id="payment_installment_recurrente_3" model="payment.installment_recurrente">
+        <field name="name">12</field>
+    </record>
+
+    <record id="payment_installment_recurrente_4" model="payment.installment_recurrente">
+        <field name="name">18</field>
+    </record>
+
+</odoo>
