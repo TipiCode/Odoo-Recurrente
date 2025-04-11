@@ -21,6 +21,10 @@ class PaymentProvider(models.Model):
     )
     recurrente_public_key = fields.Char(string="Recurrente Public Key", groups='base.group_system')
     recurrente_secret_key = fields.Char(string="Recurrente Secret Key", groups='base.group_system')
+    recurrente_setup_token = fields.Char(string="Recurrente Setup Token", groups='base.group_system')
+    allow_transfers = fields.Boolean(string="Allow Transfers", groups='base.group_system')
+    allow_installments = fields.Boolean(string="Allow Installments", groups='base.group_system')
+    installment_ids = fields.Many2many(comodel_name="payment.installment_recurrente", string="Installments", groups='base.group_system')
 
     @api.model
     def _get_compatible_providers(self, *args, is_validation=False, **kwargs):
@@ -40,7 +44,7 @@ class PaymentProvider(models.Model):
             )
         return supported_currencies
 
-    def _recurrente_make_request(self, endpoint, payload=None, method='POST'):
+    def _recurrente_make_request(self, endpoint, headers={}, payload={}, method='POST'):
         """ Make a request to Recurrente API at the specified endpoint.
 
         Note: self.ensure_one()
@@ -53,14 +57,13 @@ class PaymentProvider(models.Model):
         :raise ValidationError: If an HTTP error occurs.
         """
         self.ensure_one()
-        
-        url = url_join('https://aurora.codingtipi.com/pay/v1/recurrente/', endpoint)
-        headers = {
-            'X-PUBLIC-KEY': f'{self.recurrente_public_key}',
-            'X-SECRET-KEY': f'{self.recurrente_secret_key}',
-            'X-ORIGIN': f'{self.get_base_url()}',
-            'X-STORE': f"{self.company_id.name.replace(' ', '-')}",
-        }
+
+        url = url_join('https://aurora.codingtipi.com/pay/v2/recurrente/', endpoint)
+        if not payload:
+            payload = {
+                "publicKey": self.recurrente_public_key,
+                "secretKey": self.recurrente_secret_key,
+            }
         try:
             if method == 'GET':
                 response = requests.get(url, params=payload, headers=headers, timeout=10)
@@ -73,7 +76,7 @@ class PaymentProvider(models.Model):
                     f"Invalid API request at {url} with data:\n{pprint.pformat(payload)}"
                 )
                 raise ValidationError("Recurrente: " + _(
-                    f"The communication with the API failed. Recurrente gave us the following information: '{response.json().get('message', '')}'" 
+                    "The communication with the API failed. Recurrente gave us the following information: '%s'" % response.json().get('message', '') 
                 ))
         except (requests.exceptions.ConnectionError, requests.exceptions.Timeout):
             _logger.exception(f"Unable to reach endpoint at {url}")

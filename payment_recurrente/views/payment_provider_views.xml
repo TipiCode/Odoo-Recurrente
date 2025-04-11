@@ -12,11 +12,19 @@
                            required="code == 'recurrente' and state != 'disabled'"/>
                     <field name="recurrente_secret_key" password="True"
                            required="code == 'recurrente' and state != 'disabled'"/>
+                    <field name="recurrente_setup_token" password="True" readonly="True"/>
                     <a href="https://blog.codingtipi.com/como-aceptar-pagos-con-tarjeta-desde-woocommerce-con-recurrente/"
                        target="_blank"
                        colspan="2">
                         How to configure your Recurrente account?
                     </a>
+                </group>
+            </group>
+            <group name="payment_followup" position="after">
+                <group string="Allow Transfers / Installments" name="allow_payment_transfers_installments">
+                    <field name="allow_transfers"/>
+                    <field name="allow_installments"/>
+                    <field name="installment_ids" invisible="not allow_installments" widget="many2many_tags" options="{'no_create_edit': 'True', 'no_create': 'True'}"/>
                 </group>
             </group>
         </field>

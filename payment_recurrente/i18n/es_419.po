@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0-20240624\n"
+"Project-Id-Version: Odoo Server 17.0-20250311\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-07-16 01:34+0000\n"
-"PO-Revision-Date: 2024-07-16 01:34+0000\n"
+"POT-Creation-Date: 2025-03-22 06:19+0000\n"
+"PO-Revision-Date: 2025-03-22 06:19+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,14 +16,65 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid ""
+"An error occurred during the processing of your payment (status %s). Please try again.\n"
+"Reason: %s"
+msgstr ""
+"Un error ha ocurrido durante el procesamiento de su pago (estado %s). Por favor intente de nuevo.\n"
+"Razón: %s"
+
+#. module: payment_recurrente
 #: model:ir.model.fields,field_description:payment_recurrente.field_payment_provider__code
 msgid "Code"
 msgstr "Código"
 
 #. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_provider.py:0
+#, python-format
+msgid "Could not establish the connection to the API."
+msgstr "No se pudo establecer la conexión a la API."
+
+#. module: payment_recurrente
+#: model_terms:ir.ui.view,arch_db:payment_recurrente.payment_transaction_form
+msgid "Failure Reasons"
+msgstr "Razones de Fallo"
+
+#. module: payment_recurrente
+#: model:ir.model.fields,help:payment_recurrente.field_payment_transaction__payment_intent_failure_reasons
+msgid ""
+"Here you can find the multiple reasons why the client did have payment "
+"problems."
+msgstr ""
+"Aquí puedes encontrar las multiples razones porque el cliente tuvo problemas"
+" de pago."
+
+#. module: payment_recurrente
 #: model_terms:ir.ui.view,arch_db:payment_recurrente.view_recurrente_payment_provider_form
 msgid "How to configure your Recurrente account?"
 msgstr "¿Cómo configurar tu cuenta de Recurrente?"
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "No transaction found matching reference %s and %s."
+msgstr "No se encontró ninguna transacción que coincida con la referencia %s y %s."
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "No transaction found matching reference %s."
+msgstr "No se encontró ninguna transacción que coincida con la referencia %s."
+
+#. module: payment_recurrente
+#: model:ir.model.fields,field_description:payment_recurrente.field_payment_transaction__payment_intent_failure_reasons
+msgid "Payment Intent Failure Reasons"
+msgstr "Razones de Fallo de Intentp de Pago"
 
 #. module: payment_recurrente
 #: model:ir.model,name:payment_recurrente.model_payment_provider
@@ -34,6 +85,37 @@ msgstr "Proveedor de pago"
 #: model:ir.model,name:payment_recurrente.model_payment_transaction
 msgid "Payment Transaction"
 msgstr "Transacción de pago"
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid ""
+"Received data with invalid payment status (%s) for transaction with "
+"reference %s."
+msgstr ""
+"Datos recibidos con estado de pago inválido (%s) para la transacción con "
+"la referencia %s."
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "Received data with missing payment."
+msgstr "Datos recibidos con pago faltante."
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "Received data with missing reference."
+msgstr "Datos recibidos con referencia faltante."
+
+#. module: payment_recurrente
+#: model:ir.model.fields.selection,name:payment_recurrente.selection__payment_provider__code__recurrente
+#: model:payment.provider,name:payment_recurrente.payment_provider_recurrente
+msgid "Recurrente"
+msgstr ""
 
 #. module: payment_recurrente
 #: model:ir.model.fields,field_description:payment_recurrente.field_payment_transaction__id_recurrente_checkout
@@ -81,12 +163,38 @@ msgid "Su pago se procesó con éxito pero está en espera de aprobación."
 msgstr ""
 
 #. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "The client went back from the Recurrente's checkout."
+msgstr "El cliente volvió desde el checkout de Recurrente."
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_provider.py:0
+#, python-format
+msgid ""
+"The communication with the API failed. Recurrente gave us the following "
+"information: '%s'"
+msgstr ""
+"La comunicación con la API falló. Recurrente dió la siguiente "
+"información: '%s'"
+
+#. module: payment_recurrente
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "The payment is in process."
+msgstr "El pago está en proceso."
+
+#. module: payment_recurrente
 #: model:ir.model.fields,help:payment_recurrente.field_payment_provider__code
 msgid "The technical code of this payment provider."
 msgstr "El código técnico de este proveedor de pagos."
 
 #. module: payment_recurrente
-#: model:ir.model.fields.selection,name:payment_recurrente.selection__payment_provider__code__recurrente
-#: model:payment.provider,name:payment_recurrente.payment_provider_recurrente
-msgid "Recurrente"
-msgstr ""
+#. odoo-python
+#: code:addons/payment_recurrente/models/payment_transaction.py:0
+#, python-format
+msgid "Unknown payment status: %s"
+msgstr "Estado de pago desconocido: %s"
